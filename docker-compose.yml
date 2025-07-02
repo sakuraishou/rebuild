@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  # --- Directus (CMS) ---
+  directus:
+    image: directus/directus:latest
+    container_name: funeral_directus
+    ports:
+      - "8055:8055"
+    volumes:
+      - ./directus-data/uploads:/directus/uploads
+      - ./directus-data/extensions:/directus/extensions
+    environment:
+      KEY: "6e46a60cc637aed19c830442d14760a6a3700c1613877f1058d3547197a93af0"      # 後でランダムな文字列に変更
+      SECRET: "82a480a7657dca0c72245432f97447298d496dfff64e270dcdead0a62e498e3b"  # 後でランダムな文字列に変更
+      ADMIN_EMAIL: "admin@example.com"
+      ADMIN_PASSWORD: "password"
+      DB_CLIENT: "pg"
+      DB_CONNECTION_STRING: "postgresql://postgres.gkdvwmekevaudhgppuss:kinpoudou@aws-0-ap-northeast-1.pooler.supabase.com:6543/postgres"
+      CORS_ENABLED: "true"
+      CORS_ORIGIN: "http://localhost:3000"
+      WEBSOCKETS_ENABLED: "true"
+      DEFAULT_LANGUAGE: "ja-JP"
+
+
+      # --- Next.js (Frontend) ---
+  nextjs:
+    container_name: funeral_frontend
+    build:
+      context: ./frontend # ./frontend フォルダを元にビルドする
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app # フォルダを同期して、コードの変更を即時反映
+      - /app/node_modules # node_modulesは同期対象から除外
+    tty: true # コンテナを起動し続けるためのおまじない
