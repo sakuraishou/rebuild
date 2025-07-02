@@ -10,7 +10,7 @@ export default async function HomePage() {
 
   return (
     <main className="p-8">
-      <h1 className="text-2xl font-bold mb-4">ブランド一覧です</h1>
+      <h1 className="text-2xl font-bold mb-4">ブランド一覧です１２３４５</h1>
 
       {/* 取得したデータを、クライアントコンポーネントにpropsとして渡す */}
       <BrandList brands={brands} />
