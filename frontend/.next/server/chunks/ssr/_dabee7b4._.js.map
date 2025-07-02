@@ -1,0 +1,8 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 6, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"","debugId":null}},
+    {"offset": {"line": 24, "column": 0}, "map": {"version":3,"sources":["file:///app/src/lib/directus.ts"],"sourcesContent":["import { createDirectus, rest } from \"@directus/sdk\";\n\nconst directus = createDirectus(process.env.DIRECTUS_URL as string).with(\n  rest()\n);\n\nexport default directus;\n"],"names":[],"mappings":";;;AAAA;;AAEA,MAAM,WAAW,CAAA,GAAA,kJAAA,CAAA,iBAAc,AAAD,EAAE,QAAQ,GAAG,CAAC,YAAY,EAAY,IAAI,CACtE,CAAA,GAAA,kJAAA,CAAA,OAAI,AAAD;uCAGU","debugId":null}},
+    {"offset": {"line": 37, "column": 0}, "map": {"version":3,"sources":["file:///app/src/app/page.tsx"],"sourcesContent":["import directus from \"@/lib/directus\";\nimport { readItems } from \"@directus/sdk\";\n\n// ブランドの型を定義（TypeScript用）\ntype Brand = {\n  id: number;\n  name: string;\n  slug: string;\n};\n\nexport default async function HomePage() {\n  // Directusから'brands'コレクションのデータを取得\n  const brands = await directus.request(readItems(\"brands\"));\n\n  return (\n    <main>\n      <h1>ブランド一覧</h1>\n      <ul>\n        {brands.map((brand: Brand) => (\n          <li key={brand.id}>{brand.name}</li>\n        ))}\n      </ul>\n    </main>\n  );\n}\n"],"names":[],"mappings":";;;;AAAA;AACA;;;;AASe,eAAe;IAC5B,kCAAkC;IAClC,MAAM,SAAS,MAAM,sHAAA,CAAA,UAAQ,CAAC,OAAO,CAAC,CAAA,GAAA,kJAAA,CAAA,YAAS,AAAD,EAAE;IAEhD,qBACE,8OAAC;;0BACC,8OAAC;0BAAG;;;;;;0BACJ,8OAAC;0BACE,OAAO,GAAG,CAAC,CAAC,sBACX,8OAAC;kCAAmB,MAAM,IAAI;uBAArB,MAAM,EAAE;;;;;;;;;;;;;;;;AAK3B","debugId":null}}]
+}
