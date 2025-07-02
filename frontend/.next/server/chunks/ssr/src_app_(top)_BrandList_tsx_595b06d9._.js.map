@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file:///app/src/app/%28top%29/BrandList.tsx"],"sourcesContent":["\"use client\"; // クライアントコンポーネントであることを宣言\n\nimport { useDevice } from \"@/contexts/DeviceContext\";\n\n// page.tsxから渡されるデータの型を定義\ntype Brand = {\n  id: number;\n  name: string;\n};\ntype Props = {\n  brands: Brand[];\n};\n\nexport const BrandList = ({ brands }: Props) => {\n  const { isMobile } = useDevice(); // フックの使用はこちらで行う\n\n  return (\n    <>\n      <ul>\n        {brands.map((brand) => (\n          <li key={brand.id}>{brand.name}</li>\n        ))}\n      </ul>\n\n      {isMobile ? (\n        <p className=\"mt-4 font-bold text-green-600\">\n          これは**モバイル**向けの表示です。\n        </p>\n      ) : (\n        <p className=\"mt-4 font-bold text-blue-600\">\n          これは**PC**向けの表示です。\n        </p>\n      )}\n    </>\n  );\n};\n"],"names":[],"mappings":";;;;AAEA;AAFA,cAAc,wBAAwB;;;AAa/B,MAAM,YAAY,CAAC,EAAE,MAAM,EAAS;IACzC,MAAM,EAAE,QAAQ,EAAE,GAAG,CAAA,GAAA,iIAAA,CAAA,YAAS,AAAD,KAAK,gBAAgB;IAElD,qBACE;;0BACE,8OAAC;0BACE,OAAO,GAAG,CAAC,CAAC,sBACX,8OAAC;kCAAmB,MAAM,IAAI;uBAArB,MAAM,EAAE;;;;;;;;;;YAIpB,yBACC,8OAAC;gBAAE,WAAU;0BAAgC;;;;;qCAI7C,8OAAC;gBAAE,WAAU;0BAA+B;;;;;;;;AAMpD","debugId":null}}]
-}

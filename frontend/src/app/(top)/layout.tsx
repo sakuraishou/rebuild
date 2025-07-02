@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import "@splidejs/react-splide/css";
 import "@/app/globals.scss";
 import Header from "@/components/top/Header";
 import { DeviceProvider } from "@/contexts/DeviceContext";
